@@ -18,22 +18,8 @@
             background-color: rgba(0, 0, 0, 0);/*fundo do título*/
             color: #0F0; /* Cor verde estilo Matrix */
             font-family: 'Courier New', Courier, monospace; /* Estilo fonte matrix */
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: .15em solid lime; /* Efeito de cursor piscando */
             font-size: 48px; /* Tamanho grande para destaque */
-            animation: typing 4s steps(30, end), blink-caret .75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: lime; }
+            letter-spacing: 2px;
         }
 
         ul { /*lista nao ordenda*/
@@ -86,7 +72,8 @@
     <!-- Canvas para o efeito Matrix -->
     <canvas id="matrix"></canvas>
 
-    <h1>Hacker Team</h1><!-- Cabeçalho principal da página com efeito Matrix -->
+    <h1 id="matrix-title">Hacker Team</h1><!-- Cabeçalho principal da página com efeito Matrix -->
+    
     <ul> <!-- Lista de membros da equipe -->
         <li> <!-- Primeiro membro da equipe -->
             <a style="text-decoration: none;" href="equipe/hunter1.html"><!-- Link para a página individual do membro Bruno Fraga -->
@@ -149,6 +136,35 @@
         }
 
         setInterval(draw, 30); // Animação contínua a cada 30ms
+
+        // Função para criar o efeito de "descriptografia" no título
+        function decryptTitle() {
+            const titleElement = document.getElementById('matrix-title');
+            const titleText = titleElement.textContent;
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+-=<>/?!';
+            let currentIndex = 0;
+
+            const interval = setInterval(() => {
+                if (currentIndex < titleText.length) {
+                    let displayedText = '';
+                    for (let i = 0; i < titleText.length; i++) {
+                        if (i < currentIndex) {
+                            displayedText += titleText[i];
+                        } else {
+                            displayedText += letters[Math.floor(Math.random() * letters.length)];
+                        }
+                    }
+                    titleElement.textContent = displayedText;
+                    currentIndex++;
+                } else {
+                    clearInterval(interval);
+                    titleElement.textContent = titleText; // Mostrar o texto final
+                }
+            }, 100); // Velocidade da troca de letras
+        }
+
+        // Executar o efeito de descriptografia ao carregar a página
+        window.onload = decryptTitle;
     </script>
 </body>
 </html>
