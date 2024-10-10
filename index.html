@@ -1,0 +1,82 @@
+<!DOCTYPE html> <!-- Declaração do tipo de documento -->
+<html lang="pt-BR"> <!-- Elemento raiz do documento HTML -->
+<head> <!-- Cabeçalho do documento -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a visualização para dispositivos móveis -->
+    <title>Hackers</title> <!-- Título da página que aparece na aba do navegador -->
+    <style>/*Estilos CSS*/ 
+        body { /*Corpo do documento*/
+            font-family: Arial, sans-serif;/*fonte da pagina*/
+            background-color: #010000;/*Cor de fundo*/
+            margin: 0;/*Remove margens padrão*/
+            padding: 20px;/*Adiciona padding interno*/
+        }
+        h1 { /*Título principal*/
+            text-align: center;/*Centraliza o texto*/
+            background-color: rgba(0, 0, 0, 0.986);/*fundo do título*/
+        }
+        ul { /*lista nao ordenda*/
+            list-style-type: none;  /* Remove os marcadores de lista (pontos, círculos) */
+            padding: 0;/* Remove o preenchimento (padding) interno da lista */
+            background-color:#0e0000;/* Define a cor de fundo da lista como preto escuro */
+        }
+        li { /* Estilo para os itens da lista (li) */
+            margin: 20px 0; /* Adiciona espaçamento de 20px acima e abaixo de cada item da lista */
+            text-align: center;/* Centraliza o conteúdo de cada item da lista */
+            background-color: rgb(9, 0, 0);/* Define a cor de fundo do item da lista como um preto mais escuro */
+        }
+        img{  /* Estilo para as imagens */
+            width: 150px; /* Define a largura das imagens como 150px */
+            height: auto; /* Ajusta a altura automaticamente para manter a proporção da imagem */
+            border-radius:75px;/* Torna as bordas arredondadas com raio de 75px (formato circular) */
+        }
+        .neon { /* Classe para o efeito neon nas imagens */
+            box-shadow: 0 0 5px #f60303, 0 0 10px #f70303, 0 0 15px #ff1100, 0 0 20px #ff0000; /* Adiciona um efeito de sombra vermelha ao redor da imagem, simulando neon */
+            transition: box-shadow 0.3s;/* Adiciona uma transição suave ao efeito de sombra quando houver mudança */
+        }
+
+        .neon:hover {/* Efeito neon ao passar o mouse sobre a imagem (hover) */
+            box-shadow: 0 0 10px #0552e1, 0 0 20px #0552e1, 0 0 30px #0552e1, 0 0 40px #0552e1;/* Muda a cor do brilho para azul ao passar o mouse */
+        }
+        .nome {/*Classe para o nome do membro*/
+            text-decoration: none;/* Remove o sublinhado dos links do nome */
+    transition: transform 0.3s, color 0.3s;/* Adiciona uma transição suave para a transformação e a cor ao passar o mouse */
+    color: #333;/* Define a cor inicial do nome como cinza escuro */
+}
+
+.nome:hover {/* Efeito hover no nome */
+    transform: scale(1.1); /* Aumenta ligeiramente o tamanho do nome (zoom) ao passar o mouse */
+    color: #007BFF; /* Muda a cor do nome para azul ao passar o mouse */
+}
+    </style>
+</head>
+<body>
+    <h1 style="color: #fbfbfb;">Hacker Team</h1><!-- Cabeçalho principal da página com cor branca -->
+    <ul> <!-- Lista de membros da equipe -->
+        <li> <!-- Primeiro membro da equipe -->
+            <a style="text-decoration: none;" href="equipe/hunter1.html"><!-- Link para a página individual do membro Bruno Fraga -->
+                <img class="neon" src="imagens/hunter1.jpg" alt="Hunter 1" width="100"><!-- Imagem do membro Bruno Fraga com o efeito neon -->
+                <p class="nome" style="color:#f9f9f9;">Bruno Fraga</p><!-- Nome do membro Bruno Fraga com efeito hover -->
+            </a>
+        </li>
+        <li><!-- Segundo membro da equipe -->
+            <a style="text-decoration: none;" href="equipe/hunter2.html"><!-- Link para a página individual do membro Andres Alonso -->
+                <img class="neon" src="imagens/hunter2.jpg" alt="Hunter 2" width="100"><!-- Imagem do membro Andres Alonso com o efeito neon -->
+                <p class="nome" style="color: #ffffff;">Andres Alonso</p><!-- Nome do membro Andres Alonso com efeito hover -->
+            </a>
+        </li>
+        <li> <!-- Terceiro membro da equipe -->
+            <a style="text-decoration: none;" href="equipe/hunter3.html"><!-- Link para a página individual do membro Kevin Mitnick --> 
+                <img class="neon" src="imagens/hunter3.jpg" alt="Hunter 3" width="100"><!-- Imagem do membro Kevin Mitnick com o efeito neon -->    
+                <p class="nome" style="color: #ffffff;">Kevin Mitnick</p><!-- Nome do membro Kevin Mitnick com efeito hover -->
+            </a>
+        </li>
+        <li>
+            <a style="text-decoration: none;" href="equipe/hunter4.html">
+                <img class="neon" src="imagens/hunter4.jpg" alt="hunter4" width="100">
+                <p class="nome" style="color:#ffffff;">Anonymous</p> 
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

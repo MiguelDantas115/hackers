@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiência Profissional</title>
+    <style>
+        /* Estilo para o corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0a0909;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Estilo para o título principal (h1) e subtítulos (h2) */
+        h1, h2 {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.986);
+            color: #ffffff; /* Definindo a cor do texto aqui para evitar repetição */
+        }
+
+        /* Estilo para listas ordenadas (ol) */
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Estilo para os itens da lista (li) */
+        li {
+            margin: 20px 0;
+            text-align: center;
+            background-color: rgb(7, 7, 7);
+        }
+        img {
+          /* Define a largura das imagens como 150px */
+          width: 150px;
+          /* Ajusta a altura automaticamente para manter a proporção da imagem */
+          height: auto;
+          /* Adiciona bordas arredondadas para transformar a imagem em círculo */
+          border-radius: 75px;
+      }
+        .neon { /* Classe para o efeito neon nas imagens */
+            box-shadow: 0 0 5px #03f2f6, 0 0 10px #03f2f6, 0 0 15px #03f2f6, 0 0 20px #03f2f6; /* Adiciona um efeito de sombra vermelha ao redor da imagem, simulando neon */
+            transition: box-shadow 0.3s;/* Adiciona uma transição suave ao efeito de sombra quando houver mudança */
+        }
+
+        .neon:hover {/* Efeito neon ao passar o mouse sobre a imagem (hover) */
+            box-shadow: 0 0 10px #0552e1, 0 0 20px #0552e1, 0 0 30px #0552e1, 0 0 40px #0552e1;/* Muda a cor do brilho para azul ao passar o mouse */
+        }
+
+        /* Estilo para o link "Voltar" */
+        .voltar {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo para a imagem dentro do link "Voltar" */
+        .voltar img {
+            width: 30px; 
+            margin-right: 8px; 
+        }
+
+        /* Define o estilo do contêiner que envolve as imagens */
+        .image-container {
+            display: flex; /* Usando Flexbox para alinhar as imagens */
+            justify-content: space-between; /* Espaça as imagens nos extremos */
+            align-items: center; /* Alinha verticalmente */
+            margin-top: 20px; /* Espaço acima do contêiner */
+        }
+
+        /* Define o estilo do contêiner que irá girar */
+        .flip-container {
+            perspective: 1000px; /* Dá a sensação de profundidade para o efeito 3D */
+            width: 150px; /* Largura do contêiner da imagem giratória */
+            height: 150px; /* Altura do contêiner da imagem giratória */
+        }
+
+        /* Estilos para o efeito de rotação */
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s; /* Define a duração da rotação */
+            transform-style: preserve-3d; /* Mantém o efeito 3D ao girar */
+        }
+
+        /* Efeito de rotação quando o mouse está sobre o contêiner */
+        .flip-container:hover .flipper {
+            transform: rotateY(180deg); /* Faz a rotação em 180 graus ao passar o mouse */
+        }
+
+        /* Estilo para a frente e o verso da imagem */
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Esconde o lado de trás quando não está visível */
+        }
+
+        /* Estilo para a frente (primeira imagem) */
+        .front {
+            background-image: url('https://lockgamer.com/wp-content/uploads/2012/02/timthumb-e1328493094919.jpg?w=510&h=284'); /* Caminho para a imagem da frente */
+            background-size: cover; /* Redimensiona a imagem para cobrir todo o espaço */
+            background-position: center;
+        }
+
+        /* Estilo para o verso (segunda imagem) */
+        .back {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4IQ3GlFLMIS46gHcXMXcFiLcG6Xtwr8yNddWdzmYR4d5e21z_yf-LEfJHSaNUMBcAso&usqp=CAU'); /* Caminho para a imagem de trás */
+            background-size: cover;
+            background-position: center;
+            transform: rotateY(180deg); /* Rotaciona a parte de trás em 180 graus */
+        }
+    </style>
+</head>
+<body>
+    <!-- Título principal com o nome do membro -->
+    <h1 class="nome">Anonymous</h1>
+
+    <!-- Subtítulo para a seção de Experiência Profissional -->
+    <h2 class="nome">Experiência Profissional</h2>
+
+    <!-- Lista de experiência profissional -->
+    <ol>
+        <li class="nome">Clã</li>
+        <li class="nome">Clã B</li>
+        <li class="nome">Clã C</li>
+    </ol>
+
+    <!-- Subtítulo para a seção de Habilidades -->
+    <h2 class="nome">Habilidades</h2>
+
+    <!-- Lista de habilidades -->
+    <ol>
+        <li class="nome">Rastreamento</li>
+        <li class="nome">Armadilhas</li>
+        <li class="nome">Sobrevivência</li>
+    </ol>
+
+    <!-- Contêiner para imagens lado a lado -->
+    <div class="image-container">
+        <a href="../index.html" class="voltar">
+            <img class="neon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMYzLO9uJr6JEz2zXtbjkoB54VUdlrTJ3gFg&s" alt="Voltar, Hunter 1" width="100">
+        </a>
+
+        <div class="flip-container">
+            <div class="flipper">
+                <!-- Frente da imagem -->
+                <div class="front"></div>
+                <!-- Verso da imagem -->
+                <div class="back"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
