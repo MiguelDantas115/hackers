@@ -85,6 +85,57 @@
             width: 30px;
             margin-right: 8px;
         }
+        /* Define o estilo do contêiner que envolve as imagens */
+        .image-container {
+            display: flex; /* Usando Flexbox */
+            justify-content: space-between; /* Espaça as imagens nos extremos */
+            align-items: center; /* Alinha verticalmente */
+            margin-top: 20px; /* Espaço acima do contêiner */
+        }
+
+        /* Define o estilo do contêiner que irá girar */
+        .flip-container {
+            perspective: 1000px; /* Profundidade do efeito 3D */
+            width: 150px; /* Largura do contêiner da imagem giratória */
+            height: 150px; /* Altura do contêiner da imagem giratória */
+        }
+
+        /* Estilos para o efeito de rotação */
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s; /* Duração da rotação */
+            transform-style: preserve-3d; /* Mantém o efeito 3D */
+        }
+
+        /* Efeito de rotação quando o mouse está sobre o contêiner */
+        .flip-container:hover .flipper {
+            transform: rotateY(180deg); /* Rotação em 180 graus ao passar o mouse */
+        }
+
+        /* Estilo para a frente e o verso da imagem */
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Esconde o lado de trás */
+        }
+
+        /* Estilo para a frente (primeira imagem) */
+        .front {
+            background-image: url('https://media.licdn.com/dms/image/D4E12AQGRxZ2ve_pTTw/article-cover_image-shrink_720_1280/0/1702724975284?e=2147483647&v=beta&t=P7hU2NJepFhiB31M8PACY9xDqsYsALwTkEQ5Xp_rpxM'); /* Caminho para a imagem da frente */
+            background-size: cover; /* Redimensiona a imagem */
+            background-position: center;
+        }
+
+        /* Estilo para o verso (segunda imagem) */
+        .back {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRicEZp3a_9K5sga-Y02VyvL2BlNozxKZ26TA&s'); /* Caminho para a imagem de trás */
+            background-size: cover;
+            background-position: center;
+            transform: rotateY(180deg); /* Rotaciona a parte de trás */
+        }
 
         /* Estilo para o canvas com o efeito Matrix */
         #matrix {
@@ -120,7 +171,21 @@
         <li class="nome">Armadilhas</li>
         <li class="nome">Sobrevivência</li>
     </ol>
-    
+     <!-- Contêiner para imagens lado a lado -->
+ <div class="image-container">
+    <a href="../index.html" class="voltar">
+        <img class="neon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMYzLO9uJr6JEz2zXtbjkoB54VUdlrTJ3gFg&s" alt="Voltar, Hunter 1" width="100">
+    </a>
+
+    <div class="flip-container">
+        <div class="flipper">
+            <!-- Frente da imagem -->
+            <div class="front"></div>
+            <!-- Verso da imagem -->
+            <div class="back"></div>
+        </div>
+    </div>
+</div>
     <!-- Link para voltar à página anterior -->
     <a href="../index.html" class="voltar">
         <img class="neon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMYzLO9uJr6JEz2zXtbjkoB54VUdlrTJ3gFg&s" alt="Voltar, Hunter 1">
