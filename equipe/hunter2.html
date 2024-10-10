@@ -7,130 +7,191 @@
     <style>
         /* Estilo para o corpo da página */
         body {
-          /* Define a fonte padrão como Arial */
-          font-family: Arial, sans-serif;
-          /* Define a cor de fundo como preto escuro */
-          background-color: #0a0909;
-          /* Remove as margens padrão da página */
-          margin: 0;
-          /* Adiciona espaçamento de 20px ao redor do conteúdo */
-          padding: 20px;
-      }
+            font-family: Arial, sans-serif;
+            background-color: #0a0909;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            position: relative; /* Necessário para sobrepor o canvas */
+            overflow: hidden; /* Para evitar barras de rolagem */
+        }
 
-      /* Estilo para o título principal (h1) */
-      h1 {
-          /* Centraliza o texto */
-          text-align: center;
-          /* Define a cor de fundo como preto com uma leve transparência */
-          background-color: rgba(0, 0, 0, 0.986);
-      }
+        /* Estilo para o título principal (h1) com efeito de descriptografia */
+        h1 {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.986);
+            color: #0F0; /* Cor verde estilo Matrix */
+            font-family: 'Courier New', Courier, monospace; /* Estilo da fonte Matrix */
+            font-size: 48px; /* Tamanho do título */
+            overflow: hidden; /* Para esconder os caracteres que estão sendo digitados */
+            white-space: nowrap; /* Para evitar quebra de linha */
+        }
 
-      /* Estilo para os subtítulos (h2) */
-      h2 {
-          /* Centraliza o texto */
-          text-align: center;
-          /* Define a cor de fundo como preto com uma leve transparência */
-          background-color: rgba(0, 0, 0, 0.986);
-      }
+        /* Estilo para os subtítulos (h2) */
+        h2 {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.986);
+        }
 
-      /* Estilo para listas não ordenadas (ul) */
-      ul {
-          /* Remove marcadores de lista (pontos, círculos) */
-          list-style-type: none;
-          /* Remove preenchimento interno da lista */
-          padding: 0;
-          /* Define a cor de fundo como preto */
-          background-color: #000000;
-      }
+        /* Estilo para listas não ordenadas (ul) */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            background-color: #000000;
+        }
 
-      /* Estilo para os itens da lista (li) */
-      li {
-          /* Adiciona espaçamento de 20px acima e abaixo de cada item */
-          margin: 20px 0;
-          /* Centraliza o conteúdo */
-          text-align: center;
-          /* Define cor de fundo para um preto escuro */
-          background-color: rgb(7, 7, 7);
-      }
+        /* Estilo para os itens da lista (li) */
+        li {
+            margin: 20px 0;
+            text-align: center;
+            background-color: rgb(7, 7, 7);
+        }
 
-      /* Estilo para as imagens */
-      img {
-          /* Define a largura das imagens como 150px */
-          width: 150px;
-          /* Ajusta a altura automaticamente para manter a proporção da imagem */
-          height: auto;
-          /* Adiciona bordas arredondadas para transformar a imagem em círculo */
-          border-radius: 75px;
-      }
+        /* Estilo para as imagens */
+        img {
+            width: 150px;
+            height: auto;
+            border-radius: 75px;
+        }
 
-      /* Efeito neon nas imagens */
-      .neon {
-          /* Adiciona um efeito de sombra ao redor da imagem, com cor azul ciano */
-          box-shadow: 0 0 5px #08e2d7, 0 0 10px #08e2d7, 0 0 15px #08e2d7, 0 0 20px #08e2d7;
-          /* Adiciona uma transição suave ao efeito de sombra */
-          transition: box-shadow 0.3s;
-      }
+        /* Efeito neon nas imagens */
+        .neon {
+            box-shadow: 0 0 5px #08e2d7, 0 0 10px #08e2d7, 0 0 15px #08e2d7, 0 0 20px #08e2d7;
+            transition: box-shadow 0.3s;
+        }
 
-      /* Efeito hover para neon */
-      .neon:hover {
-          /* Ao passar o mouse sobre a imagem, muda a sombra para azul escuro */
-          box-shadow: 0 0 10px #0323f6, 0 0 20px #0323f6, 0 0 30px #0323f6, 0 0 40px #0323f6;
-      }
+        .neon:hover {
+            box-shadow: 0 0 10px #0323f6, 0 0 20px #0323f6, 0 0 30px #0323f6, 0 0 40px #0323f6;
+        }
 
-      /* Estilo para listas ordenadas (ol) */
-      ol {
-          /* Remove os números padrão dos itens de lista */
-          list-style-type: none;
-          /* Remove o preenchimento interno da lista */
-          padding: 0;
-      }
+        /* Estilo para listas ordenadas (ol) */
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
 
-      /* Estilo para o link "Voltar" */
-      .voltar {
-          /* Remove o sublinhado dos links */
-          text-decoration: none;
-          /* Exibe o conteúdo em linha e alinha os itens ao centro */
-          display: flex;
-          align-items: center;
-          /* Adiciona uma margem superior de 20px */
-          margin-top: 20px;
-      }
+        /* Estilo para o link "Voltar" */
+        .voltar {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-      /* Estilo para a imagem dentro do link "Voltar" */
-      .voltar img {
-          /* Define a largura da imagem como 30px */
-          width: 30px;
-          /* Adiciona um espaçamento à direita da imagem */
-          margin-right: 8px;
-      }
-  </style>
+        .voltar img {
+            width: 30px;
+            margin-right: 8px;
+        }
+
+        /* Estilo para o canvas com o efeito Matrix */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
+        }
+    </style>
 </head>
 <body>
-    <h1 class="nome" style="color: #ffffff;">Hunter 2</h1>
-    <h2 class="nome" style="color: #ffffff;">Experiência Profissional</h2>
-   <!-- Lista de experiência profissional -->
-   <ol>
-    <!-- Itens de experiência, sem numeração -->
-    <li class="nome" style="color: #ffffff;">Clã</li>
-    <li class="nome" style="color: #ffffff;">Clã B</li>
-    <li class="nome" style="color: #ffffff;">Clã C</li>
-</ol>
+    <!-- Canvas para o efeito Matrix -->
+    <canvas id="matrix"></canvas>
 
-<!-- Subtítulo para a seção de Habilidades -->
-<h2 class="nome" style="color: #ffffff;">Habilidades</h2>
+    <!-- Título principal com o nome do membro -->
+    <h1 id="hunterTitle">Hunter 2</h1>
 
-<!-- Lista de habilidades -->
-<ol>
-    <!-- Itens de habilidades, sem numeração -->
-    <li class="nome" style="color: #ffffff;">Rastreamento</li>
-    <li class="nome" style="color: #ffffff;">Armadilhas</li>
-    <li class="nome" style="color: #ffffff;">Sobrevivência</li>
-</ol>
+    <!-- Subtítulo para a seção de Experiência Profissional -->
+    <h2 class="nome">Experiência Profissional</h2>
+    <!-- Lista de experiência profissional -->
+    <ol>
+        <li class="nome">Clã</li>
+        <li class="nome">Clã B</li>
+        <li class="nome">Clã C</li>
+    </ol>
 
-<!-- Link para voltar à página anterior -->
-<a href="../index.html" class="voltar" style="text-decoration: none;">
-    <!-- Imagem com efeito neon dentro do link "Voltar" -->
-    <img class="neon" src="https://media.tenor.com/bIQNQoOgU2cAAAAe/white-hat-hacker.png" alt="Voltar, Hunter 1" width="100">
-</a>
+    <!-- Subtítulo para a seção de Habilidades -->
+    <h2 class="nome">Habilidades</h2>
+
+    <!-- Lista de habilidades -->
+    <ol>
+        <li class="nome">Rastreamento</li>
+        <li class="nome">Armadilhas</li>
+        <li class="nome">Sobrevivência</li>
+    </ol>
+
+    <!-- Link para voltar à página anterior -->
+    <a href="../index.html" class="voltar">
+        <img class="neon" src="https://media.tenor.com/bIQNQoOgU2cAAAAe/white-hat-hacker.png" alt="Voltar, Hunter 1">
+    </a>
+
+    <script>
+        const hunterTitle = "Hunter 2";
+        const displayElement = document.getElementById("hunterTitle");
+        const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+";
+        let currentText = "";
+        let index = 0;
+        const speed = 100; // Velocidade da animação
+
+        function decrypt() {
+            if (index < hunterTitle.length) {
+                let tempText = "";
+
+                // Gera caracteres aleatórios
+                for (let i = 0; i < hunterTitle.length; i++) {
+                    if (i <= index) {
+                        tempText += hunterTitle[i]; // Mantém a letra correta
+                    } else {
+                        tempText += randomChars[Math.floor(Math.random() * randomChars.length)]; // Substitui por um aleatório
+                    }
+                }
+
+                displayElement.textContent = tempText; // Atualiza o texto do h1
+
+                index++;
+                setTimeout(decrypt, speed); // Chama a função novamente
+            } else {
+                displayElement.textContent = hunterTitle; // Exibe o nome final
+            }
+        }
+
+        // Configuração do Canvas para o efeito Matrix
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+';
+        const matrix = letters.split('');
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Fundo transparente
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0'; // Cor verde Matrix
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 30); // Animação contínua a cada 30ms
+
+        // Inicia a animação de descriptografia
+        decrypt();
+    </script>
 </body>
 </html>

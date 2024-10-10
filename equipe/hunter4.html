@@ -11,13 +11,25 @@
             background-color: #0a0909;
             margin: 0;
             padding: 20px;
+            color: white; /* Definindo a cor do texto como branco */
+            position: relative; /* Necessário para sobrepor o canvas */
+            overflow: hidden; /* Para evitar barras de rolagem */
         }
 
         /* Estilo para o título principal (h1) e subtítulos (h2) */
-        h1, h2 {
+        h1 {
+            text-align: center;
+            color: #0F0; /* Cor verde estilo Matrix para o título */
+            font-family: 'Courier New', Courier, monospace; /* Fonte estilo Matrix */
+            font-size: 48px; /* Tamanho do título */
+            overflow: hidden; /* Para esconder os caracteres que estão sendo digitados */
+            white-space: nowrap; /* Para evitar quebra de linha */
+        }
+
+        h2 {
             text-align: center;
             background-color: rgba(0, 0, 0, 0.986);
-            color: #ffffff; /* Definindo a cor do texto aqui para evitar repetição */
+            color: #ffffff; /* Cor do texto dos subtítulos */
         }
 
         /* Estilo para listas ordenadas (ol) */
@@ -32,21 +44,20 @@
             text-align: center;
             background-color: rgb(7, 7, 7);
         }
+
         img {
-          /* Define a largura das imagens como 150px */
-          width: 150px;
-          /* Ajusta a altura automaticamente para manter a proporção da imagem */
-          height: auto;
-          /* Adiciona bordas arredondadas para transformar a imagem em círculo */
-          border-radius: 75px;
-      }
-        .neon { /* Classe para o efeito neon nas imagens */
-            box-shadow: 0 0 5px #03f2f6, 0 0 10px #03f2f6, 0 0 15px #03f2f6, 0 0 20px #03f2f6; /* Adiciona um efeito de sombra vermelha ao redor da imagem, simulando neon */
-            transition: box-shadow 0.3s;/* Adiciona uma transição suave ao efeito de sombra quando houver mudança */
+            width: 150px; /* Largura das imagens */
+            height: auto; /* Ajusta a altura automaticamente */
+            border-radius: 75px; /* Bordas arredondadas */
         }
 
-        .neon:hover {/* Efeito neon ao passar o mouse sobre a imagem (hover) */
-            box-shadow: 0 0 10px #0552e1, 0 0 20px #0552e1, 0 0 30px #0552e1, 0 0 40px #0552e1;/* Muda a cor do brilho para azul ao passar o mouse */
+        .neon { /* Classe para o efeito neon nas imagens */
+            box-shadow: 0 0 5px #03f2f6, 0 0 10px #03f2f6, 0 0 15px #03f2f6, 0 0 20px #03f2f6; /* Efeito de sombra */
+            transition: box-shadow 0.3s; /* Transição suave */
+        }
+
+        .neon:hover { /* Efeito ao passar o mouse */
+            box-shadow: 0 0 10px #0552e1, 0 0 20px #0552e1, 0 0 30px #0552e1, 0 0 40px #0552e1; /* Muda a cor do brilho para azul */
         }
 
         /* Estilo para o link "Voltar" */
@@ -65,7 +76,7 @@
 
         /* Define o estilo do contêiner que envolve as imagens */
         .image-container {
-            display: flex; /* Usando Flexbox para alinhar as imagens */
+            display: flex; /* Usando Flexbox */
             justify-content: space-between; /* Espaça as imagens nos extremos */
             align-items: center; /* Alinha verticalmente */
             margin-top: 20px; /* Espaço acima do contêiner */
@@ -73,7 +84,7 @@
 
         /* Define o estilo do contêiner que irá girar */
         .flip-container {
-            perspective: 1000px; /* Dá a sensação de profundidade para o efeito 3D */
+            perspective: 1000px; /* Profundidade do efeito 3D */
             width: 150px; /* Largura do contêiner da imagem giratória */
             height: 150px; /* Altura do contêiner da imagem giratória */
         }
@@ -83,13 +94,13 @@
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.6s; /* Define a duração da rotação */
-            transform-style: preserve-3d; /* Mantém o efeito 3D ao girar */
+            transition: transform 0.6s; /* Duração da rotação */
+            transform-style: preserve-3d; /* Mantém o efeito 3D */
         }
 
         /* Efeito de rotação quando o mouse está sobre o contêiner */
         .flip-container:hover .flipper {
-            transform: rotateY(180deg); /* Faz a rotação em 180 graus ao passar o mouse */
+            transform: rotateY(180deg); /* Rotação em 180 graus ao passar o mouse */
         }
 
         /* Estilo para a frente e o verso da imagem */
@@ -97,13 +108,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden; /* Esconde o lado de trás quando não está visível */
+            backface-visibility: hidden; /* Esconde o lado de trás */
         }
 
         /* Estilo para a frente (primeira imagem) */
         .front {
             background-image: url('https://lockgamer.com/wp-content/uploads/2012/02/timthumb-e1328493094919.jpg?w=510&h=284'); /* Caminho para a imagem da frente */
-            background-size: cover; /* Redimensiona a imagem para cobrir todo o espaço */
+            background-size: cover; /* Redimensiona a imagem */
             background-position: center;
         }
 
@@ -112,13 +123,26 @@
             background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4IQ3GlFLMIS46gHcXMXcFiLcG6Xtwr8yNddWdzmYR4d5e21z_yf-LEfJHSaNUMBcAso&usqp=CAU'); /* Caminho para a imagem de trás */
             background-size: cover;
             background-position: center;
-            transform: rotateY(180deg); /* Rotaciona a parte de trás em 180 graus */
+            transform: rotateY(180deg); /* Rotaciona a parte de trás */
+        }
+
+        /* Estilo para o canvas com o efeito Matrix */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
         }
     </style>
 </head>
 <body>
+    <!-- Canvas para o efeito Matrix -->
+    <canvas id="matrix"></canvas>
+
     <!-- Título principal com o nome do membro -->
-    <h1 class="nome">Anonymous</h1>
+    <h1 id="nameTitle">Anonymous</h1>
 
     <!-- Subtítulo para a seção de Experiência Profissional -->
     <h2 class="nome">Experiência Profissional</h2>
@@ -155,5 +179,76 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const nameTitle = "Anonymous"; // Nome a ser exibido
+        const displayElement = document.getElementById("nameTitle"); // Elemento h1 para exibir o nome
+        const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+"; // Caracteres aleatórios
+        let currentText = ""; // Texto atual
+        let index = 0; // Índice do caractere atual
+        const speed = 100; // Velocidade da animação
+
+        // Função de descriptografia
+        function decrypt() {
+            if (index < nameTitle.length) {
+                let tempText = "";
+
+                // Gera caracteres aleatórios
+                for (let i = 0; i < nameTitle.length; i++) {
+                    if (i <= index) {
+                        tempText += nameTitle[i]; // Mantém a letra correta
+                    } else {
+                        tempText += randomChars[Math.floor(Math.random() * randomChars.length)]; // Substitui por um aleatório
+                    }
+                }
+
+                displayElement.textContent = tempText; // Atualiza o texto do h1
+
+                index++;
+                setTimeout(decrypt, speed); // Chama a função novamente
+            } else {
+                displayElement.textContent = nameTitle; // Exibe o nome final
+            }
+        }
+
+        // Configuração do Canvas para o efeito Matrix
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth; // Largura do canvas
+        canvas.height = window.innerHeight; // Altura do canvas
+
+        const letters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Letras que caem
+        const fontSize = 16; // Tamanho da fonte
+        const columns = canvas.width / fontSize; // Número de colunas do canvas
+
+        // Criação de gotas
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1; // Começa em 1 para não mostrar a primeira linha
+        }
+
+        // Função de animação
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Efeito de desbotamento
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Preenche o canvas
+
+            ctx.fillStyle = '#0F0'; // Cor verde
+            ctx.font = fontSize + 'px Arial'; // Fonte
+
+            // Desenha as letras
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)]; // Letra aleatória
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize); // Desenha a letra
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0; // Reinicia a gota
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 50); // Chama a função de desenho a cada 50ms
+        decrypt(); // Inicia a descriptografia
+    </script>
 </body>
 </html>
