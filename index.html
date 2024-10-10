@@ -10,20 +10,22 @@
             background-color: #010000;/*Cor de fundo*/
             margin: 0;/*Remove margens padrão*/
             padding: 20px;/*Adiciona padding interno*/
+            position: relative; /* Necessário para sobrepor o canvas */
+            color: white;
         }
         h1 { /*Título principal*/
             text-align: center;/*Centraliza o texto*/
-            background-color: rgba(0, 0, 0, 0.986);/*fundo do título*/
+            background-color: rgba(0, 0, 0, 0);/*fundo do título*/
         }
         ul { /*lista nao ordenda*/
             list-style-type: none;  /* Remove os marcadores de lista (pontos, círculos) */
             padding: 0;/* Remove o preenchimento (padding) interno da lista */
-            background-color:#0e0000;/* Define a cor de fundo da lista como preto escuro */
+            background-color:#0e000037;/* Define a cor de fundo da lista como preto escuro */
         }
         li { /* Estilo para os itens da lista (li) */
             margin: 20px 0; /* Adiciona espaçamento de 20px acima e abaixo de cada item da lista */
             text-align: center;/* Centraliza o conteúdo de cada item da lista */
-            background-color: rgb(9, 0, 0);/* Define a cor de fundo do item da lista como um preto mais escuro */
+            background-color: rgba(9, 0, 0, 0.23);/* Define a cor de fundo do item da lista como um preto mais escuro */
         }
         img{  /* Estilo para as imagens */
             width: 150px; /* Define a largura das imagens como 150px */
@@ -40,17 +42,31 @@
         }
         .nome {/*Classe para o nome do membro*/
             text-decoration: none;/* Remove o sublinhado dos links do nome */
-    transition: transform 0.3s, color 0.3s;/* Adiciona uma transição suave para a transformação e a cor ao passar o mouse */
-    color: #333;/* Define a cor inicial do nome como cinza escuro */
-}
+            transition: transform 0.3s, color 0.3s;/* Adiciona uma transição suave para a transformação e a cor ao passar o mouse */
+            color: #333;/* Define a cor inicial do nome como cinza escuro */
+        }
 
-.nome:hover {/* Efeito hover no nome */
-    transform: scale(1.1); /* Aumenta ligeiramente o tamanho do nome (zoom) ao passar o mouse */
-    color: #007BFF; /* Muda a cor do nome para azul ao passar o mouse */
-}
+        .nome:hover {/* Efeito hover no nome */
+            transform: scale(1.1); /* Aumenta ligeiramente o tamanho do nome (zoom) ao passar o mouse */
+            color: #007BFF; /* Muda a cor do nome para azul ao passar o mouse */
+        }
+
+        /* Estilo para o canvas com o efeito Matrix */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
+        }
+
     </style>
 </head>
 <body>
+    <!-- Canvas para o efeito Matrix -->
+    <canvas id="matrix"></canvas>
+
     <h1 style="color: #fbfbfb;">Hacker Team</h1><!-- Cabeçalho principal da página com cor branca -->
     <ul> <!-- Lista de membros da equipe -->
         <li> <!-- Primeiro membro da equipe -->
@@ -78,5 +94,42 @@
             </a>
         </li>
     </ul>
+
+    <script>
+        // Configuração do Canvas
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}';
+        const matrix = letters.split('');
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Fundo transparente
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0'; // Cor verde Matrix
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 30); // Animação contínua a cada 30ms
+    </script>
 </body>
 </html>
