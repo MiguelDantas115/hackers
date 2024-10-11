@@ -45,7 +45,7 @@
 
         /* Estilo para os itens da lista (li) */
         li {
-            margin: 50px 0;
+            margin: 50px 10;
             text-align: center;
             background-color: rgba(20, 206, 107, 0);
             color: rgb(252, 252, 252); /* Cor verde estilo Matrix */
@@ -150,6 +150,15 @@
             height: 100vh;
             z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
         }
+
+        /* Estilo para o parágrafo do criador */
+        .creator {
+            text-align: center;
+            font-size: 14px; /* Tamanho da fonte */
+            color: #0F0; /* Cor verde estilo Matrix */
+            margin-top: 20px; /* Espaço acima */
+            opacity: 0.7; /* Um pouco transparente para ser discreto */
+        }
     </style>
 </head>
 <body>
@@ -194,7 +203,10 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- Parágrafo com o nome do criador -->
+    <p class="creator">Criado por: Seu Nome Aqui</p>
+
     <script>
         const hackerName = "Bruno Fraga";
         const displayElement = document.getElementById("hackerName");
