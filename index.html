@@ -4,105 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackers</title>
-    <style>/*Estilos CSS*/ 
-        body { /*Corpo do documento*/
-            font-family: Arial, sans-serif;/*fonte da pagina*/
-            background-color: #010000;/*Cor de fundo*/
-            margin: 0;/*Remove margens padrão*/
-            padding: 20px;/*Adiciona padding interno*/
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte do corpo da página */
+            background-color: #010000; /* Cor de fundo da página */
+            margin: 0; /* Remove margens padrão */
+            padding: 20px; /* Adiciona padding interno */
             position: relative; /* Necessário para sobrepor o canvas */
-            color: white;
+            color: white; /* Cor padrão do texto */
         }
-        h1 { /*Título principal*/
-            text-align: center;/*Centraliza o texto*/
-            background-color: rgba(0, 0, 0, 0);/*fundo do título*/
+        h1 {
+            text-align: center; /* Centraliza o texto do título */
+            background-color: rgba(0, 0, 0, 0); /* Fundo do título transparente */
             color: #0F0; /* Cor verde estilo Matrix */
-            font-family: 'Courier New', Courier, monospace; /* Estilo fonte matrix */
+            font-family: 'Courier New', Courier, monospace; /* Fonte estilo Matrix */
             font-size: 48px; /* Tamanho grande para destaque */
-            letter-spacing: 2px;
+            letter-spacing: 2px; /* Espaçamento entre letras */
         }
-
-        ul { /*lista nao ordenda*/
-            list-style-type: none;  /* Remove os marcadores de lista (pontos, círculos) */
-            padding: 0;/* Remove o preenchimento (padding) interno da lista */
-            background-color:#0e000000;/* Define a cor de fundo da lista como preto escuro */
+        ul {
+            list-style-type: none; /* Remove marcadores de lista */
+            padding: 0; /* Remove preenchimento interno da lista */
+            background-color: #0e000000; /* Cor de fundo da lista */
         }
-        li { /* Estilo para os itens da lista (li) */
-            margin: 20px 0; /* Adiciona espaçamento de 20px acima e abaixo de cada item da lista */
-            text-align: center;/* Centraliza o conteúdo de cada item da lista */
-            background-color: rgba(9, 0, 0, 0);/* Define a cor de fundo do item da lista como um preto mais escuro */
+        li {
+            margin: 20px 0; /* Espaçamento acima e abaixo de cada item da lista */
+            text-align: center; /* Centraliza o conteúdo de cada item da lista */
+            background-color: rgba(9, 0, 0, 0); /* Cor de fundo do item da lista */
         }
-        img{  /* Estilo para as imagens */
-            width: 150px; /* Define a largura das imagens como 150px */
-            height: auto; /* Ajusta a altura automaticamente para manter a proporção da imagem */
-            border-radius:75px;/* Torna as bordas arredondadas com raio de 75px (formato circular) */
+        img {
+            width: 150px; /* Define a largura das imagens */
+            height: auto; /* Mantém a proporção da imagem */
+            border-radius: 75px; /* Bordas arredondadas (formato circular) */
         }
-        .neon { /* Classe para o efeito neon nas imagens */
-            box-shadow: 0 0 5px #f60303, 0 0 10px #f70303, 0 0 15px #ff1100, 0 0 20px #ff0000; /* Adiciona um efeito de sombra vermelha ao redor da imagem, simulando neon */
-            transition: box-shadow 0.3s;/* Adiciona uma transição suave ao efeito de sombra quando houver mudança */
+        .neon {
+            box-shadow: 0 0 5px #f60303, 0 0 10px #f70303, 0 0 15px #ff1100, 0 0 20px #ff0000; /* Efeito neon nas imagens */
+            transition: box-shadow 0.3s; /* Transição suave para o efeito de sombra */
         }
-
-        .neon:hover {/* Efeito neon ao passar o mouse sobre a imagem (hover) */
-            box-shadow: 0 0 10px #0552e1, 0 0 20px #0552e1, 0 0 30px #0552e1, 0 0 40px #0552e1;/* Muda a cor do brilho para azul ao passar o mouse */
+        .neon:hover {
+            box-shadow: 0 0 10px #0552e1, 0 0 20px #0552e1, 0 0 30px #0552e1, 0 0 40px #0552e1; /* Efeito ao passar o mouse */
         }
-        .nome {/*Classe para o nome do membro*/
-            text-decoration: none;/* Remove o sublinhado dos links do nome */
-            transition: transform 0.3s, color 0.3s;/* Adiciona uma transição suave para a transformação e a cor ao passar o mouse */
-            color: #333;/* Define a cor inicial do nome como cinza escuro */
+        .nome {
+            text-decoration: none; /* Remove sublinhado dos links */
+            transition: transform 0.3s, color 0.3s; /* Transição suave para transformação e cor */
+            color: #0F0; /* Cor dos nomes dos membros */
         }
-
-        .nome:hover {/* Efeito hover no nome */
-            transform: scale(1.1); /* Aumenta ligeiramente o tamanho do nome (zoom) ao passar o mouse */
-            color: #007BFF; /* Muda a cor do nome para azul ao passar o mouse */
-        }
-
         /* Estilo para o canvas com o efeito Matrix */
         #matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            position: fixed; /* Mantém o canvas fixo na tela */
+            top: 0; /* Alinha ao topo */
+            left: 0; /* Alinha à esquerda */
+            width: 100vw; /* Largura total da tela */
+            height: 100vh; /* Altura total da tela */
             z-index: -1; /* Coloca o canvas atrás de todo o conteúdo */
         }
-
     </style>
 </head>
 <body>
     <!-- Canvas para o efeito Matrix -->
     <canvas id="matrix"></canvas>
 
-    <h1 id="matrix-title">Hackers</h1><!-- Cabeçalho principal da página com efeito Matrix -->
-    
+    <h1 id="matrix-title">Hackers</h1><!-- Cabeçalho principal da página -->
+
     <ul> <!-- Lista de membros da equipe -->
         <li> <!-- Primeiro membro da equipe -->
-            <a style="text-decoration: none;" href="equipe/hunter1.html"><!-- Link para a página individual do membro Bruno Fraga -->
-                <img class="neon" src="imagens/hunter1.jpg" alt="Hunter 1" width="100"><!-- Imagem do membro Bruno Fraga com o efeito neon -->
-                <p class="nome" style="color:#f9f9f9;">Bruno Fraga</p><!-- Nome do membro Bruno Fraga com efeito hover -->
+            <a style="text-decoration: none;" href="equipe/hunter1.html">
+                <img class="neon" src="imagens/hunter1.jpg" alt="Hunter 1" width="100">
+                <p class="nome">Bruno Fraga</p><!-- Nome do membro com efeito de descriptografia -->
             </a>
         </li>
         <li><!-- Segundo membro da equipe -->
-            <a style="text-decoration: none;" href="equipe/hunter2.html"><!-- Link para a página individual do membro Andres Alonso -->
-                <img class="neon" src="imagens/hunter2.jpg" alt="Hunter 2" width="100"><!-- Imagem do membro Andres Alonso com o efeito neon -->
-                <p class="nome" style="color: #ffffff;">Andres Alonso</p><!-- Nome do membro Andres Alonso com efeito hover -->
+            <a style="text-decoration: none;" href="equipe/hunter2.html">
+                <img class="neon" src="imagens/hunter2.jpg" alt="Hunter 2" width="100">
+                <p class="nome">Andres Alonso</p><!-- Nome do membro com efeito de descriptografia -->
             </a>
         </li>
         <li> <!-- Terceiro membro da equipe -->
-            <a style="text-decoration: none;" href="equipe/hunter3.html"><!-- Link para a página individual do membro Kevin Mitnick --> 
-                <img class="neon" src="imagens/hunter3.jpg" alt="Hunter 3" width="100"><!-- Imagem do membro Kevin Mitnick com o efeito neon -->    
-                <p class="nome" style="color: #ffffff;">Kevin Mitnick</p><!-- Nome do membro Kevin Mitnick com efeito hover -->
+            <a style="text-decoration: none;" href="equipe/hunter3.html"> 
+                <img class="neon" src="imagens/hunter3.jpg" alt="Hunter 3" width="100">    
+                <p class="nome">Kevin Mitnick</p><!-- Nome do membro com efeito de descriptografia -->
             </a>
         </li>
         <li> <!-- Quarto membro da equipe -->
             <a style="text-decoration: none;" href="equipe/hunter4.html">
                 <img class="neon" src="imagens/hunter4.jpg" alt="hunter4" width="100">
-                <p class="nome" style="color:#ffffff;">Anonymous</p> 
+                <p class="nome">Anonymous</p> 
             </a>
         </li>
         <li>
             <a style="text-decoration: none;" href="equipe/hunter5.html">
                 <img class="neon" src="imagens/hunter5.jpg" alt="hunter5" width="100">
-                <p class="nome" style="color:#ffffff;">Gary McKinnon</p>
+                <p class="nome">Gary McKinnon</p>
+            </a>
         </li>
     </ul>
 
@@ -111,65 +104,69 @@
         const canvas = document.getElementById('matrix');
         const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth; // Define a largura do canvas como a largura da janela
+        canvas.height = window.innerHeight; // Define a altura do canvas como a altura da janela
 
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}';
-        const matrix = letters.split('');
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}'; // Conjunto de caracteres para animação
+        const matrix = letters.split(''); // Divide os caracteres em um array
 
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+        const fontSize = 16; // Tamanho da fonte para a animação
+        const columns = canvas.width / fontSize; // Calcula o número de colunas no canvas
+        const drops = Array(Math.floor(columns)).fill(1); // Cria um array para controlar a posição de cada coluna
 
         function draw() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Fundo transparente
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // Preenche o canvas
 
             ctx.fillStyle = '#0F0'; // Cor verde Matrix
-            ctx.font = `${fontSize}px monospace`;
+            ctx.font = `${fontSize}px monospace`; // Define a fonte para o texto
 
             for (let i = 0; i < drops.length; i++) {
-                const text = matrix[Math.floor(Math.random() * matrix.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                const text = matrix[Math.floor(Math.random() * matrix.length)]; // Seleciona um caractere aleatório
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize); // Desenha o caractere no canvas
 
+                // Reinicia a coluna se a posição exceder a altura do canvas
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
+                    drops[i] = 0; // Reinicia a posição da coluna
                 }
 
-                drops[i]++;
+                drops[i]++; // Move a coluna para baixo
             }
         }
 
         setInterval(draw, 30); // Animação contínua a cada 30ms
 
-        // Função para criar o efeito de "descriptografia" no título
-        function decryptTitle() {
-            const titleElement = document.getElementById('matrix-title');
-            const titleText = titleElement.textContent;
-            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+-=<>/?!';
-            let currentIndex = 0;
+        // Função para criar o efeito de "descriptografia" nos nomes
+        function decryptText(element, text) {
+            let currentIndex = 0; // Índice atual do texto
 
             const interval = setInterval(() => {
-                if (currentIndex < titleText.length) {
-                    let displayedText = '';
-                    for (let i = 0; i < titleText.length; i++) {
+                if (currentIndex <= text.length) {
+                    let displayedText = ''; // Texto que será exibido
+                    for (let i = 0; i < text.length; i++) {
                         if (i < currentIndex) {
-                            displayedText += titleText[i];
+                            displayedText += text[i]; // Adiciona letras já "descriptografadas"
                         } else {
-                            displayedText += letters[Math.floor(Math.random() * letters.length)];
+                            displayedText += letters[Math.floor(Math.random() * letters.length)]; // Adiciona letras aleatórias
                         }
                     }
-                    titleElement.textContent = displayedText;
-                    currentIndex++;
+                    element.textContent = displayedText; // Atualiza o texto do elemento
+                    currentIndex++; // Move para a próxima letra
                 } else {
-                    clearInterval(interval);
-                    titleElement.textContent = titleText; // Mostrar o texto final
+                    clearInterval(interval); // Para a animação quando o texto completo é exibido
                 }
-            }, 100); // Velocidade da troca de letras
+            }, 100); // Intervalo de 100ms para cada letra
         }
 
-        // Executar o efeito de descriptografia ao carregar a página
-        window.onload = decryptTitle;
+        // Inicia a animação de "descriptografia" para os nomes
+        const paragraphs = document.querySelectorAll('p.nome'); // Seleciona todos os parágrafos com a classe 'nome'
+        paragraphs.forEach((paragraph) => {
+            decryptText(paragraph, paragraph.textContent); // Inicia a animação para cada parágrafo
+        });
+
+        // Inicia a animação de "descriptografia" para o título
+        const title = document.getElementById('matrix-title'); // Seleciona o elemento h1
+        decryptText(title, title.textContent); // Inicia a animação para o título
     </script>
 </body>
 </html>
