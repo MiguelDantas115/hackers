@@ -1,8 +1,8 @@
-Vou explicar como o efeito Matrix funciona em cada parte do código, focando principalmente no CSS e no JavaScript. Vamos analisar as principais seções:
+Vou explicar como o efeito Matrix funciona em cada parte do código, focando principalmente no CSS e no JavaScript:
 
 1. HTML Estrutural
 html
-Copiar código
+
 <body>
     <canvas id="matrix"></canvas>
     <h1 id="nameTitle">Anonymous</h1>
@@ -24,7 +24,7 @@ Copiar código
 <h1>, <h2>, <ol>, <li>: Esses são os elementos de texto que exibirão o efeito de "descriptografia".
 2. CSS Estilização
 css
-Copiar código
+
 body {
     font-family: Arial, sans-serif;
     background-color: #0a0909;
@@ -37,7 +37,7 @@ body {
 O corpo da página é estilizado com uma fonte, cor de fundo e cor de texto. O overflow: hidden impede que o conteúdo exceda a área visível.
 3. Canvas e Efeito Matrix
 css
-Copiar código
+
 #matrix {
     position: fixed;
     top: 0;
@@ -50,7 +50,7 @@ O canvas é posicionado de forma fixa, cobrindo toda a janela. O z-index: -1 gar
 4. JavaScript para o Efeito Matrix
 Inicialização do Canvas
 javascript
-Copiar código
+
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
 
@@ -59,7 +59,7 @@ canvas.height = window.innerHeight;
 O JavaScript captura o elemento canvas e define suas dimensões para preencher a tela.
 Configuração das Letras
 javascript
-Copiar código
+
 const letters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 const fontSize = 16;
 const columns = canvas.width / fontSize;
@@ -70,7 +70,7 @@ columns: Número de colunas calculadas com base na largura do canvas.
 drops: Array que rastreia a altura de cada gota de letra.
 Função de Desenho
 javascript
-Copiar código
+
 function draw() {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -95,7 +95,7 @@ drops[i]++: Incrementa a posição da gota para baixo.
 if: Reinicia a gota aleatoriamente para dar o efeito de "cair".
 5. Função de Descriptografia
 javascript
-Copiar código
+
 function decryptElement(element) {
     const originalText = element.textContent;
     let index = 0;
@@ -127,9 +127,9 @@ O loop gera caracteres aleatórios até que a posição correta seja alcançada,
 setTimeout(decrypt, speed) chama a função repetidamente até que o texto original seja exibido.
 6. Aplicação do Efeito
 javascript
-Copiar código
+
 const elementsToDecrypt = document.querySelectorAll("h1, h2, li");
 elementsToDecrypt.forEach(element => decryptElement(element));
 Seleciona todos os elementos desejados (h1, h2, li) e aplica a função decryptElement a cada um deles, iniciando o efeito de descriptografia.
 Resumo
-O efeito Matrix é criado através da combinação do canvas para a animação de caracteres caindo e a função de descriptografia que aplica um efeito de revelação no texto dos elementos especificados. O resultado é um visual dinâmico e atraente que se encaixa bem na temática do "Matrix". Se tiver mais perguntas ou precisar de mais detalhes, é só avisar!
+O efeito Matrix é criado através da combinação do canvas para a animação de caracteres caindo e a função de descriptografia que aplica um efeito de revelação no texto dos elementos especificados. O resultado é um visual dinâmico e atraente que se encaixa bem na temática do "Matrix". 
