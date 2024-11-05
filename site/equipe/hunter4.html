@@ -29,7 +29,7 @@
         h2 {
             text-align: center;
             background-color: rgba(0, 0, 0, 0);
-            color: #ffffff;
+            color: #0f0;
         }
 
         ol {
@@ -167,7 +167,7 @@
     <p class="creator">&copy;2024/MDantas</p>
     <script>
         const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+";
-        const speed = 20;
+        const speed = 100;
 
         function decryptElement(element) {
             const originalText = element.textContent;
@@ -228,7 +228,7 @@
 
         setInterval(draw, 50);
 
-        const elementsToDecrypt = document.querySelectorAll("h1, h2, li");
+        const elementsToDecrypt = document.querySelectorAll("h1, h2");
         elementsToDecrypt.forEach(element => decryptElement(element));
     </script>
 </body>

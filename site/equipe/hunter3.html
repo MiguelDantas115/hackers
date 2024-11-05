@@ -200,7 +200,7 @@
 <p class="creator">&copy;2024/MDantas</p>
     <script>
         const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()_+";
-        const speed = 20; // Velocidade da animação
+        const speed = 100; // Velocidade da animação
 
         function decryptElement(element) {
             const originalText = element.textContent;
@@ -267,7 +267,7 @@
         setInterval(draw, 30); // Animação contínua a cada 30ms
 
         // Inicia a animação de descriptografia nos elementos h1, h2, li e p
-        const elementsToDecrypt = document.querySelectorAll("h1, h2, li, p");
+        const elementsToDecrypt = document.querySelectorAll("h1, h2");
         elementsToDecrypt.forEach(element => decryptElement(element));
     </script>
 </body>

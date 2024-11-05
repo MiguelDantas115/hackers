@@ -12,7 +12,7 @@
             margin: 0;
             padding: 20px;
             height: 2000px;
-            color: white;
+            color: #0F0;
             position: relative; /* Necessário para sobrepor o canvas */
             overflow: auto; /* Para evitar barras de rolagem */
         }
@@ -32,7 +32,7 @@
         h2 {
             text-align: center;
             background-color: rgba(20, 206, 107, 0);
-            color: rgb(255, 255, 255); /* Cor verde estilo Matrix */
+            color: #0F0(255, 255, 255); /* Cor verde estilo Matrix */
             font-family: 'Courier New', Courier, monospace; /* Estilo da fonte Matrix */
             font-size: 36px; /* Tamanho dos subtítulos */
         }
@@ -283,8 +283,8 @@
         // Inicia a animação de descriptografia para o título
         decrypt(displayElement);
 
-        // Inicia a animação de descriptografia para h2 e li
-        document.querySelectorAll('h2, li').forEach((element) => {
+        // Inicia a animação de descriptografia para h2 
+        document.querySelectorAll('h2').forEach((element) => {
             decrypt(element);
         });
     </script>
