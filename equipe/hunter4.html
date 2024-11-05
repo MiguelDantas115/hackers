@@ -29,7 +29,7 @@
         h2 {
             text-align: center;
             background-color: rgba(0, 0, 0, 0);
-            color: #ffffff;
+            color: #0f0;
         }
 
         ol {
@@ -103,13 +103,13 @@
         }
 
         .front {
-            background-image: url('https://media.licdn.com/dms/image/D4E12AQGRxZ2ve_pTTw/article-cover_image-shrink_720_1280/0/1702724975284?e=2147483647&v=beta&t=P7hU2NJepFhiB31M8PACY9xDqsYsALwTkEQ5Xp_rpxM');
+            background-image: url('https://lockgamer.com/wp-content/uploads/2012/02/timthumb-e1328493094919.jpg?w=510&h=284');
             background-size: cover;
             background-position: center;
         }
 
         .back {
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRicEZp3a_9K5sga-Y02VyvL2BlNozxKZ26TA&s');
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX4IQ3GlFLMIS46gHcXMXcFiLcG6Xtwr8yNddWdzmYR4d5e21z_yf-LEfJHSaNUMBcAso&usqp=CAU');
             background-size: cover;
             background-position: center;
             transform: rotateY(180deg);
@@ -136,17 +136,20 @@
     <!-- Canvas para o efeito Matrix -->
     <canvas id="matrix"></canvas>
 
-    <h1 id="nameTitle">Gary McKinnon</h1>
+    <h1 id="nameTitle">Anonymous</h1>
 
-    <h2>Experiência Profissional</h2>
+    <h2></h2>
     <ol>
-        <li>Hacker black hat</li>
+        <li>grupo não identificado, uma espécie de coletivo hacker</li>
+        <li>O grupo, que é composto por uma rede internacional, minimamente organizada de hacktivistas, que teve sua raiz nos quadro de avisos baseado em imagens online 4chan. O site começou em 2003 e é usado por pessoas em todo o mundo.</li>
+        <li>Eles não fazem hacking e cracking sem uma causa. A crença do “corpo de membros” sobre a função do Anonymous em todo o mundo é: as corporações e organizações que são consideradas corruptas ou danosas à liberdade devem ser atacadas.</li>
     </ol>
 <br>
     <h2>Feitos</h2>
     <ol>
-        <li>2001, o mesmo em que aconteceram os ataques terroristas às Torres Gêmeas em Nova York, Gary resolveu invadir algumas máquinas do Governo Norte-Americano — e acabou perpetrando o que mais tarde ficou conhecido nos EUA como o maior ataque a computadores militares de todos os tempos</li>
-        <li>Em 2002, o Pentágono admitiu que McKinnon invadiu e danificou 53 computadores do comando das Forças Armadas, do Exército, Força Aérea e Nasa, tendo acesso a informações secretas, tornando inoperante o distrito militar de Washington e causando prejuízos de cerca de US$ 1 milhão.</li>
+        <li>O Anonymous ganhou fama ao atacar sites da religião. A revolta do grupo aconteceu após um vídeo que mostrava Tom Cruise pregando na igreja ter sido retirado do Youtube na Justiça com a alegação de ser uma "violação aos direitos autorais". Os hackers consideraram um ato de censura e acabaram mobilizando até protestos de rua com manifestantes vestindo a máscara de V de Vingança, marca registrada do coletivo invasor.</li>
+        <li>Bastante criticado por autoridades, o Anonymous também faz boas ações. O grupo foi um dos líderes da campanha "Operação Darknet", que denunciou o endereço de IP de 190 internautas acusados pelo grupo de praticar atividades ligadas à pedofilia na web.</li>
+        <li>Em maio de 2017, o Brasil viu explodir um grande escândalo de corrupção envolvendo empresas do setor de proteína animal como JBS e Friboi. O Anonymous disse, na época, ter invadido os sistemas das empresas e acessado contas de e-mail de centenas de funcionários, incluindo diretores."Aos trabalhadores dessas empresas, saibam que o problema não é com vocês, e sim com essa corja de ladrões, corruptos e filhos da p*** que estão acabando com o nosso povo e nosso país", dizia uma mensagem publicada pelo grupo de hacktivistas.</li>
     </ol>
 
     <div class="image-container">
@@ -225,7 +228,7 @@
 
         setInterval(draw, 50);
 
-        const elementsToDecrypt = document.querySelectorAll("h1, h2, li");
+        const elementsToDecrypt = document.querySelectorAll("h1, h2");
         elementsToDecrypt.forEach(element => decryptElement(element));
     </script>
 </body>
